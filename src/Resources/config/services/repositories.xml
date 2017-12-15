@@ -1,0 +1,38 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="forci_menu_builder.repo.abstract" abstract="true">
+            <factory service="forci_menu_builder.entity_manager" method="getRepository"/>
+        </service>
+
+        <service id="forci_menu_builder.repo.menus" class="Forci\Bundle\MenuBuilderBundle\Repository\MenuRepository"
+                 parent="forci_menu_builder.repo.abstract">
+            <argument>Forci\Bundle\MenuBuilderBundle\Entity\Menu</argument>
+        </service>
+        <service id="forci_menu_builder.repo.menus_items" class="Forci\Bundle\MenuBuilderBundle\Repository\MenuItemRepository"
+                 parent="forci_menu_builder.repo.abstract">
+            <argument>Forci\Bundle\MenuBuilderBundle\Entity\MenuItem</argument>
+        </service>
+        <service id="forci_menu_builder.repo.menus_items_parameters" class="Forci\Bundle\MenuBuilderBundle\Repository\MenuItemParameterRepository"
+                 parent="forci_menu_builder.repo.abstract">
+            <argument>Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter</argument>
+        </service>
+
+        <service id="forci_menu_builder.repo.routes" class="Forci\Bundle\MenuBuilderBundle\Repository\RouteRepository"
+                 parent="forci_menu_builder.repo.abstract">
+            <argument>Forci\Bundle\MenuBuilderBundle\Entity\Route</argument>
+        </service>
+        <service id="forci_menu_builder.repo.routes_parameters" class="Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterRepository"
+                 parent="forci_menu_builder.repo.abstract">
+            <argument>Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter</argument>
+        </service>
+        <service id="forci_menu_builder.repo.routes_parameters_types" class="Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterTypeRepository"
+                 parent="forci_menu_builder.repo.abstract">
+            <argument>Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType</argument>
+        </service>
+
+    </services>
+</container>

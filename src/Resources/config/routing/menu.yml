@@ -1,0 +1,31 @@
+forci_menu_builder_menu_list:
+    path:        /list
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:list }
+
+forci_menu_builder_menu_create:
+    path:        /create
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:create }
+
+forci_menu_builder_menu_list_row_refresh:
+    path:        /{id}/list/refresh
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:refreshListRow }
+
+forci_menu_builder_menu_edit:
+    path:        /{id}/edit
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:edit }
+
+forci_menu_builder_menu_name_update:
+    path:        /{id}/update/name
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:updateName }
+
+forci_menu_builder_menu_preview:
+    path:        /{id}/preview
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:preview }
+
+forci_menu_builder_menu_make_system:
+    path:        /{id}/make/system
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:makeSystem }
+
+forci_menu_builder_menu_make_public:
+    path:        /{id}/make/public
+    defaults:    { _controller: ForciMenuBuilderBundle:Menu:makePublic }

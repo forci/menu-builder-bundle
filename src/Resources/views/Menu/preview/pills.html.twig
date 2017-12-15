@@ -1,0 +1,16 @@
+<ul class="list-group no-margin">
+    <li class="list-group-item">
+        {% for item in items %}
+            {% if item.children|length %}
+                <a href="{{ item|menuItemPath }}" class="list-group-item">
+                    {{ item.name }}
+                </a>
+                {% include _self with {items: item.children} %}
+            {% else %}
+                <a href="{{ item|menuItemPath }}" class="list-group-item">
+                    {{ item.name }}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </li>
+</ul>

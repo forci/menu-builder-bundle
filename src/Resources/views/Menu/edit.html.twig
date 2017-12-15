@@ -1,0 +1,36 @@
+{% extends '@ForciMenuBuilder/Menu/base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% form_theme form '@ForciMenuBuilder/_shared/form/form_theme.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_rest(form) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">
+                    Edit
+                </button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li>
+        <code>{{ menu.name }}</code>
+    </li>
+    <li>
+        Edit
+    </li>
+    <li class="pull-right">
+        <a href="{{ path('forci_menu_builder_menu_preview', {id: menu.id}) }}">
+            <i class="fa fa-search"></i>
+            Preview
+        </a>
+    </li>
+{% endblock %}

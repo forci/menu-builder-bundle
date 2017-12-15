@@ -1,0 +1,18 @@
+{% if item.children|length %}
+    <li class="dropdown-submenu">
+        <a tabindex="-1" href="{{ item|menuItemPath }}">
+            {{ item.name }}
+        </a>
+        <ul class="dropdown-menu">
+            {% for child in item.children %}
+                {% include _self with {item: child} %}
+            {% endfor %}
+        </ul>
+    </li>
+{% else %}
+    <li class="{{ item.route.route|isRoute('active') }}">
+        <a href="{{ item|menuItemPath }}">
+            {{ item.name }}
+        </a>
+    </li>
+{% endif %}

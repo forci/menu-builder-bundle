@@ -1,0 +1,54 @@
+<td>
+    {{ route.id }}
+</td>
+<td>
+    {{ route.route }}
+</td>
+<td>
+    {% if route.path %}
+        {{ route.path }}
+    {% else %}
+        -
+    {% endif %}
+</td>
+<td>
+    <a href="javascript:;" class="x-editable-text" data-type="text" data-pk="1"
+       data-url="{{ path('forci_menu_builder_route_name_update', {id: route.id}) }}"
+       data-placement="top" title="Set Route Name">
+        {{ route.name }}
+    </a>
+</td>
+<td>
+    {% if route.parameters|length %}
+        <ul>
+            {% for param in route.parameters %}
+                <li>
+                    <code>{{ param.parameter }}</code>
+                    (<a href="javascript:;" class="x-editable-text" data-type="text" data-pk="1"
+                        data-url="{{ path('forci_menu_builder_route_parameter_name_update', {id: param.id}) }}"
+                        data-placement="top" title="Set Parameter Name">
+                        {{ param.name }}
+                    </a>)
+                    {% if param.type.id == constant('ID_REQUIRED', param.type) %}
+                        <label class="label label-warning">{{ param.type.name }}</label>
+                    {% elseif param.type.id == constant('ID_OPTIONAL', param.type) %}
+                        <label class="label label-info">{{ param.type.name }}</label>
+                    {% elseif param.type.id == constant('ID_QUERY_STRING', param.type) %}
+                        <label class="label label-info">{{ param.type.name }}</label>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</td>
+<td>
+    {% if route.isSystem %}
+        <a href="{{ path('forci_menu_builder_route_make_public', {id: route.id}) }}" class="btn btn-danger ajax-action">
+            System
+        </a>
+    {% else %}
+        <a href="{{ path('forci_menu_builder_route_make_system', {id: route.id}) }}" class="btn btn-success ajax-action">
+            Public
+        </a>
+    {% endif %}
+</td>

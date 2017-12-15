@@ -1,0 +1,51 @@
+{% extends '@ForciMenuBuilder/Route/base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            {% form_theme filterForm '@ForciMenuBuilder/_shared/form/filter_theme.html.twig' %}
+            {{ form(filterForm) }}
+
+            {% if routes|length > 0 %}
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-striped table-condensed flip-content">
+                        <thead class="flip-content">
+                        <tr>
+                            <th>ID</th>
+                            <th>Route</th>
+                            <th>Path</th>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for route in routes %}
+                            <tr data-refresh="{{ path('forci_menu_builder_route_refresh_row', {id: route.id}) }}">
+                                {% include '@ForciMenuBuilder/Route/list/list_row.html.twig' %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-danger">
+                    No routes found
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        {% include '@ForciMenuBuilder/_shared/pagination.html.twig' %}
+    </div>
+
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li>
+        List
+    </li>
+{% endblock %}

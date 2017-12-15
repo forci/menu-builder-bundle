@@ -1,0 +1,33 @@
+<td>{{ menu.id }}</td>
+<td>
+    <a href="javascript:;" class="x-editable-text" data-type="text" data-pk="1"
+       data-url="{{ path('forci_menu_builder_menu_name_update', {id: menu.id}) }}"
+       data-placement="top" title="Set Menu Name">
+        {{ menu.name }}
+    </a>
+</td>
+<td>
+    {{ menu.systemName }}
+</td>
+<td>{{ menu.items|length }}</td>
+<td>
+    <a href="{{ path('forci_menu_builder_menu_edit', {id: menu.id}) }}" class="btn btn-primary">
+        Edit
+    </a>
+</td>
+<td>
+    <a href="{{ path('forci_menu_builder_menu_preview', {id: menu.id}) }}" class="btn btn-primary">
+        Preview
+    </a>
+</td>
+<td>
+    {% if menu.isSystem %}
+        <a href="{{ path('forci_menu_builder_menu_make_public', {id: menu.id}) }}" class="btn btn-danger ajax-action" rel="popover" title="System" data-content="System menus can not be deleted. This is a protection intended for use in the client area, where clients (people with no technical knowledge) might attempt to remove a menu that is hardcoded elsewhere in the application, ie: A main menu is accessed via twig via the getMenu(ID) function.">
+            System
+        </a>
+    {% else %}
+        <a href="{{ path('forci_menu_builder_menu_make_system', {id: menu.id}) }}" class="btn btn-success ajax-action" rel="popover" title="User" data-content="This is a User menu. It can be deleted at any time without restrictions. It is advisable that you only use System menus for hard-coding into Twig templates to prevent the case where a client deletes a menu and breaks the application.">
+            User
+        </a>
+    {% endif %}
+</td>

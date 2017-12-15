@@ -1,0 +1,19 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="forci_menu_builder.manager.routes" class="Forci\Bundle\MenuBuilderBundle\Manager\RouteManager">
+            <argument type="service" id="forci_menu_builder.repo.routes"/>
+            <argument type="service" id="forci_menu_builder.repo.routes_parameters"/>
+            <argument type="service" id="forci_menu_builder.repo.routes_parameters_types"/>
+            <argument type="service" id="forci_menu_builder.repo.menus_items"/>
+        </service>
+
+        <service id="forci_menu_builder.manager.menus" class="Forci\Bundle\MenuBuilderBundle\Manager\MenuManager">
+            <argument type="service" id="forci_menu_builder.repo.menus"/>
+        </service>
+
+    </services>
+</container>

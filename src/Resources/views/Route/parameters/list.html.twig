@@ -1,0 +1,61 @@
+{% extends '@ForciMenuBuilder/Route/base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            {% form_theme filterForm '@ForciMenuBuilder/_shared/form/filter_theme.html.twig' %}
+            {{ form(filterForm) }}
+
+            {% if parameters|length > 0 %}
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-striped table-condensed flip-content">
+                        <thead class="flip-content">
+                        <tr>
+                            <th>ID</th>
+                            <th>Parameter</th>
+                            <th>Name</th>
+                            <th>Route</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for parameter in parameters %}
+                            <tr>
+                                {% include '@ForciMenuBuilder/Route/parameters/list_row.html.twig' %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-danger">
+                    No parameters found
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        {% include '@ForciMenuBuilder/_shared/pagination.html.twig' %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('forci_menu_builder_route_parameter_list') }}">
+            Parameters
+        </a>
+    </li>
+    <li>
+        List
+    </li>
+{% endblock %}

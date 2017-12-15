@@ -1,0 +1,28 @@
+forci_menu_builder_route_list:
+    path:        /list
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:listRoutes }
+
+forci_menu_builder_route_refresh_row:
+    path:        /{id}/refresh/row
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:refreshListRow }
+
+forci_menu_builder_route_name_update:
+    path:        /{id}/update/name
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:updateRouteName }
+
+forci_menu_builder_route_parameter_name_update:
+    path:        /parameters/{id}/update/name
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:updateRouteParameterName }
+
+forci_menu_builder_route_import:
+    path:        /import
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:import }
+
+forci_menu_builder_route_make_system:
+    path:        /{id}/make/system
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:makeSystem }
+
+forci_menu_builder_route_make_public:
+    path:        /{id}/make/public
+    defaults:    { _controller: ForciMenuBuilderBundle:Route:makePublic }
+

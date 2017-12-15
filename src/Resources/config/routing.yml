@@ -1,0 +1,11 @@
+forci_menu_builder_dashboard:
+    path:        /
+    defaults:    { _controller: ForciMenuBuilderBundle:Dashboard:dashboard }
+
+forci_menu_builder_route:
+    resource: routing/route.yml
+    prefix: /routes
+
+forci_menu_builder_menu:
+    resource: routing/menu.yml
+    prefix: /menus
