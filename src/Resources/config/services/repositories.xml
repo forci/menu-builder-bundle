@@ -4,7 +4,7 @@
 
     <services>
 
-        <service id="forci_menu_builder.repo.abstract" abstract="true">
+        <service id="forci_menu_builder.repo.abstract" abstract="true" public="true">
             <factory service="forci_menu_builder.entity_manager" method="getRepository"/>
         </service>
 

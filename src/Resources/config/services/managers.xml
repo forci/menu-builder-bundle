@@ -4,14 +4,14 @@
 
     <services>
 
-        <service id="forci_menu_builder.manager.routes" class="Forci\Bundle\MenuBuilderBundle\Manager\RouteManager">
+        <service id="forci_menu_builder.manager.routes" class="Forci\Bundle\MenuBuilderBundle\Manager\RouteManager" public="true">
             <argument type="service" id="forci_menu_builder.repo.routes"/>
             <argument type="service" id="forci_menu_builder.repo.routes_parameters"/>
             <argument type="service" id="forci_menu_builder.repo.routes_parameters_types"/>
             <argument type="service" id="forci_menu_builder.repo.menus_items"/>
         </service>
 
-        <service id="forci_menu_builder.manager.menus" class="Forci\Bundle\MenuBuilderBundle\Manager\MenuManager">
+        <service id="forci_menu_builder.manager.menus" class="Forci\Bundle\MenuBuilderBundle\Manager\MenuManager" public="true">
             <argument type="service" id="forci_menu_builder.repo.menus"/>
         </service>
 
