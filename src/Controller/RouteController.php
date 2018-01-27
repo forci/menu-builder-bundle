@@ -3,7 +3,9 @@
 /*
  * This file is part of the ForciMenuBuilderBundle package.
  *
- * (c) Martin Kirilov <wucdbm@gmail.com>
+ * Copyright (c) Forci Web Consulting Ltd.
+ *
+ * Author Martin Kirilov <martin@forci.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,12 +13,12 @@
 
 namespace Forci\Bundle\MenuBuilderBundle\Controller;
 
+use Forci\Bundle\MenuBuilderBundle\Filter\Route\RouteFilter;
+use Forci\Bundle\MenuBuilderBundle\Form\Route\FilterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Router;
-use Forci\Bundle\MenuBuilderBundle\Filter\Route\RouteFilter;
-use Forci\Bundle\MenuBuilderBundle\Form\Route\FilterType;
 
 class RouteController extends Controller {
 
@@ -61,8 +63,10 @@ class RouteController extends Controller {
         $route = $repo->findOneById($id);
 
         if (!$route) {
-            return $this->witter([
-                'text' => 'Route not found'
+            return $this->json([
+                'witter' => [
+                    'text' => 'Route not found'
+                ]
             ]);
         }
 

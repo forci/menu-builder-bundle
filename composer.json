@@ -13,7 +13,7 @@
     "require": {
         "php": ">=7.1.3",
         "wucdbm/quick-ui-bundle": "~0.2",
-        "symfony/symfony": "~3.0|~4.0"
+        "symfony/framework-bundle": "~3.0|~4.0"
     },
     "require-dev": {
         "doctrine/orm": "~2.5",
@@ -26,5 +26,5 @@
     "config": {
         "bin-dir": "bin"
     },
-    "license": "GPL-3.0"
+    "license": "MIT"
 }

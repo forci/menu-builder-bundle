@@ -3,7 +3,9 @@
 /*
  * This file is part of the ForciMenuBuilderBundle package.
  *
- * (c) Martin Kirilov <wucdbm@gmail.com>
+ * Copyright (c) Forci Web Consulting Ltd.
+ *
+ * Author Martin Kirilov <martin@forci.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +13,13 @@
 
 namespace Forci\Bundle\MenuBuilderBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Forci\Bundle\MenuBuilderBundle\Entity\Menu;
 use Forci\Bundle\MenuBuilderBundle\Filter\Menu\MenuFilter;
 use Forci\Bundle\MenuBuilderBundle\Form\Menu\CreateType;
 use Forci\Bundle\MenuBuilderBundle\Form\Menu\FilterType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class MenuController extends Controller {
 
@@ -59,8 +61,10 @@ class MenuController extends Controller {
         $menu = $repo->findOneById($id);
 
         if (!$menu) {
-            return $this->witter([
-                'text' => 'Menu not found'
+            return $this->json([
+                'witter' => [
+                    'text' => 'Menu not found'
+                ]
             ]);
         }
 
