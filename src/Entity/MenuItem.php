@@ -11,13 +11,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Entity;
+namespace Forci\Bundle\MenuBuilder\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilderBundle\Repository\MenuItemRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\MenuItemRepository")
  * @ORM\Table(name="_forci__menu_builder_menus_items")
  */
 class MenuItem {
@@ -45,30 +45,30 @@ class MenuItem {
     protected $ord = 0;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\Menu", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilder\Entity\Menu", inversedBy="items")
      * @ORM\JoinColumn(name="menu_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     protected $menu;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\Route", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilder\Entity\Route", inversedBy="items")
      * @ORM\JoinColumn(name="route_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      */
     protected $route;
 
     /**
-     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter", mappedBy="item")
+     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilder\Entity\MenuItemParameter", mappedBy="item")
      */
     protected $parameters;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItem", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilder\Entity\MenuItem", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      */
     protected $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItem", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilder\Entity\MenuItem", mappedBy="parent")
      * @ORM\OrderBy({"ord" = "ASC"})
      */
     protected $children;
@@ -103,56 +103,56 @@ class MenuItem {
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\Menu $menu
+     * @param \Forci\Bundle\MenuBuilder\Entity\Menu $menu
      *
      * @return $this
      */
-    public function setMenu(\Forci\Bundle\MenuBuilderBundle\Entity\Menu $menu) {
+    public function setMenu(\Forci\Bundle\MenuBuilder\Entity\Menu $menu) {
         $this->menu = $menu;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\Menu
+     * @return \Forci\Bundle\MenuBuilder\Entity\Menu
      */
     public function getMenu() {
         return $this->menu;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\Route|null $route
+     * @param \Forci\Bundle\MenuBuilder\Entity\Route|null $route
      *
      * @return $this
      */
-    public function setRoute(\Forci\Bundle\MenuBuilderBundle\Entity\Route $route = null) {
+    public function setRoute(\Forci\Bundle\MenuBuilder\Entity\Route $route = null) {
         $this->route = $route;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\Route
+     * @return \Forci\Bundle\MenuBuilder\Entity\Route
      */
     public function getRoute() {
         return $this->route;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $parameter
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $parameter
      *
      * @return $this
      */
-    public function addParameter(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $parameter) {
+    public function addParameter(\Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $parameter) {
         $this->parameters[] = $parameter;
 
         return $this;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $parameter
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $parameter
      */
-    public function removeParameter(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $parameter) {
+    public function removeParameter(\Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $parameter) {
         $this->parameters->removeElement($parameter);
     }
 
@@ -164,38 +164,38 @@ class MenuItem {
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $parent
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $parent
      *
      * @return $this
      */
-    public function setParent(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $parent = null) {
+    public function setParent(\Forci\Bundle\MenuBuilder\Entity\MenuItem $parent = null) {
         $this->parent = $parent;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\Route
+     * @return \Forci\Bundle\MenuBuilder\Entity\Route
      */
     public function getParent() {
         return $this->parent;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $child
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $child
      *
      * @return $this
      */
-    public function addChild(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $child) {
+    public function addChild(\Forci\Bundle\MenuBuilder\Entity\MenuItem $child) {
         $this->children[] = $child;
 
         return $this;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $chid
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $chid
      */
-    public function removeChild(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $chid) {
+    public function removeChild(\Forci\Bundle\MenuBuilder\Entity\MenuItem $chid) {
         $this->children->removeElement($chid);
     }
 

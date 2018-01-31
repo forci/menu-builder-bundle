@@ -11,13 +11,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Entity;
+namespace Forci\Bundle\MenuBuilder\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilderBundle\Repository\MenuRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\MenuRepository")
  * @ORM\Table(name="_forci__menu_builder_menus")
  */
 class Menu {
@@ -55,7 +55,7 @@ class Menu {
     protected $dateModified;
 
     /**
-     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItem", mappedBy="menu")
+     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilder\Entity\MenuItem", mappedBy="menu")
      * @ORM\OrderBy({"ord" = "ASC"})
      */
     protected $items;
@@ -120,11 +120,11 @@ class Menu {
     /**
      * Add booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $item
      *
      * @return $this
      */
-    public function addItem(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item) {
+    public function addItem(\Forci\Bundle\MenuBuilder\Entity\MenuItem $item) {
         $this->items[] = $item;
 
         return $this;
@@ -133,9 +133,9 @@ class Menu {
     /**
      * Remove booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $item
      */
-    public function removeItem(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item) {
+    public function removeItem(\Forci\Bundle\MenuBuilder\Entity\MenuItem $item) {
         $this->items->removeElement($item);
     }
 

@@ -11,18 +11,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Manager;
+namespace Forci\Bundle\MenuBuilder\Manager;
 
 use Symfony\Component\Routing\Route as SymfonyRoute;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Router;
-use Forci\Bundle\MenuBuilderBundle\Entity\MenuItem;
-use Forci\Bundle\MenuBuilderBundle\Entity\Route;
-use Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter;
-use Forci\Bundle\MenuBuilderBundle\Repository\MenuItemRepository;
-use Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterRepository;
-use Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterTypeRepository;
-use Forci\Bundle\MenuBuilderBundle\Repository\RouteRepository;
+use Forci\Bundle\MenuBuilder\Entity\MenuItem;
+use Forci\Bundle\MenuBuilder\Entity\Route;
+use Forci\Bundle\MenuBuilder\Entity\RouteParameter;
+use Forci\Bundle\MenuBuilder\Repository\MenuItemRepository;
+use Forci\Bundle\MenuBuilder\Repository\RouteParameterRepository;
+use Forci\Bundle\MenuBuilder\Repository\RouteParameterTypeRepository;
+use Forci\Bundle\MenuBuilder\Repository\RouteRepository;
 
 class RouteManager {
 

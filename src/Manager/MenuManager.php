@@ -11,12 +11,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Manager;
+namespace Forci\Bundle\MenuBuilder\Manager;
 
-use Forci\Bundle\MenuBuilderBundle\Entity\Menu;
-use Forci\Bundle\MenuBuilderBundle\Entity\MenuItem;
-use Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter;
-use Forci\Bundle\MenuBuilderBundle\Repository\MenuRepository;
+use Forci\Bundle\MenuBuilder\Entity\Menu;
+use Forci\Bundle\MenuBuilder\Entity\MenuItem;
+use Forci\Bundle\MenuBuilder\Entity\MenuItemParameter;
+use Forci\Bundle\MenuBuilder\Repository\MenuRepository;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Router;

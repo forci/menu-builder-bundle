@@ -8,30 +8,30 @@
             <factory service="forci_menu_builder.entity_manager" method="getRepository"/>
         </service>
 
-        <service id="forci_menu_builder.repo.menus" class="Forci\Bundle\MenuBuilderBundle\Repository\MenuRepository"
+        <service id="forci_menu_builder.repo.menus" class="Forci\Bundle\MenuBuilder\Repository\MenuRepository"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilderBundle\Entity\Menu</argument>
+            <argument>Forci\Bundle\MenuBuilder\Entity\Menu</argument>
         </service>
-        <service id="forci_menu_builder.repo.menus_items" class="Forci\Bundle\MenuBuilderBundle\Repository\MenuItemRepository"
+        <service id="forci_menu_builder.repo.menus_items" class="Forci\Bundle\MenuBuilder\Repository\MenuItemRepository"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilderBundle\Entity\MenuItem</argument>
+            <argument>Forci\Bundle\MenuBuilder\Entity\MenuItem</argument>
         </service>
-        <service id="forci_menu_builder.repo.menus_items_parameters" class="Forci\Bundle\MenuBuilderBundle\Repository\MenuItemParameterRepository"
+        <service id="forci_menu_builder.repo.menus_items_parameters" class="Forci\Bundle\MenuBuilder\Repository\MenuItemParameterRepository"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter</argument>
+            <argument>Forci\Bundle\MenuBuilder\Entity\MenuItemParameter</argument>
         </service>
 
-        <service id="forci_menu_builder.repo.routes" class="Forci\Bundle\MenuBuilderBundle\Repository\RouteRepository"
+        <service id="forci_menu_builder.repo.routes" class="Forci\Bundle\MenuBuilder\Repository\RouteRepository"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilderBundle\Entity\Route</argument>
+            <argument>Forci\Bundle\MenuBuilder\Entity\Route</argument>
         </service>
-        <service id="forci_menu_builder.repo.routes_parameters" class="Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterRepository"
+        <service id="forci_menu_builder.repo.routes_parameters" class="Forci\Bundle\MenuBuilder\Repository\RouteParameterRepository"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter</argument>
+            <argument>Forci\Bundle\MenuBuilder\Entity\RouteParameter</argument>
         </service>
-        <service id="forci_menu_builder.repo.routes_parameters_types" class="Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterTypeRepository"
+        <service id="forci_menu_builder.repo.routes_parameters_types" class="Forci\Bundle\MenuBuilder\Repository\RouteParameterTypeRepository"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType</argument>
+            <argument>Forci\Bundle\MenuBuilder\Entity\RouteParameterType</argument>
         </service>
 
     </services>

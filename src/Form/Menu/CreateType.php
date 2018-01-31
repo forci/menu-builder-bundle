@@ -11,9 +11,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Form\Menu;
+namespace Forci\Bundle\MenuBuilder\Form\Menu;
 
-use Forci\Bundle\MenuBuilderBundle\Entity\Menu;
+use Forci\Bundle\MenuBuilder\Entity\Menu;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

@@ -11,12 +11,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Twig;
+namespace Forci\Bundle\MenuBuilder\Twig;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Forci\Bundle\MenuBuilderBundle\Entity\MenuItem;
-use Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter;
+use Forci\Bundle\MenuBuilder\Entity\MenuItem;
+use Forci\Bundle\MenuBuilder\Entity\MenuItemParameter;
 
 class MenuItemExtension extends \Twig_Extension {
 

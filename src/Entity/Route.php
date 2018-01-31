@@ -11,13 +11,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Entity;
+namespace Forci\Bundle\MenuBuilder\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilderBundle\Repository\RouteRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\RouteRepository")
  * @ORM\Table(name="_forci__menu_builder_routes",
  *      uniqueConstraints={
  *          @ORM\UniqueConstraint(name="route", columns={"route"})
@@ -54,12 +54,12 @@ class Route {
     protected $isSystem = false;
 
     /**
-     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItem", mappedBy="route")
+     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilder\Entity\MenuItem", mappedBy="route")
      */
     protected $items;
 
     /**
-     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter", mappedBy="route")
+     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilder\Entity\RouteParameter", mappedBy="route")
      */
     protected $parameters;
 
@@ -123,11 +123,11 @@ class Route {
     /**
      * Add booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $item
      *
      * @return $this
      */
-    public function addItem(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item) {
+    public function addItem(\Forci\Bundle\MenuBuilder\Entity\MenuItem $item) {
         $this->items[] = $item;
 
         return $this;
@@ -136,9 +136,9 @@ class Route {
     /**
      * Remove booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItem $item
      */
-    public function removeItem(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item) {
+    public function removeItem(\Forci\Bundle\MenuBuilder\Entity\MenuItem $item) {
         $this->items->removeElement($item);
     }
 
@@ -154,11 +154,11 @@ class Route {
     /**
      * Add booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter
+     * @param \Forci\Bundle\MenuBuilder\Entity\RouteParameter $parameter
      *
      * @return $this
      */
-    public function addParameter(\Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter) {
+    public function addParameter(\Forci\Bundle\MenuBuilder\Entity\RouteParameter $parameter) {
         $this->parameters[] = $parameter;
 
         return $this;
@@ -167,9 +167,9 @@ class Route {
     /**
      * Remove booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter
+     * @param \Forci\Bundle\MenuBuilder\Entity\RouteParameter $parameter
      */
-    public function removeParameter(\Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter) {
+    public function removeParameter(\Forci\Bundle\MenuBuilder\Entity\RouteParameter $parameter) {
         $this->parameters->removeElement($parameter);
     }
 

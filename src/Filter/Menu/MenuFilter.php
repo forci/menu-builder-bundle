@@ -11,9 +11,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Filter\Menu;
+namespace Forci\Bundle\MenuBuilder\Filter\Menu;
 
-use Forci\Bundle\MenuBuilderBundle\Entity\Route;
+use Forci\Bundle\MenuBuilder\Entity\Route;
 use Wucdbm\Bundle\QuickUIBundle\Filter\AbstractFilter;
 
 class MenuFilter extends AbstractFilter {

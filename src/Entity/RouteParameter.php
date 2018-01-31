@@ -11,13 +11,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Entity;
+namespace Forci\Bundle\MenuBuilder\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\RouteParameterRepository")
  * @ORM\Table(name="_forci__menu_builder_routes_parameters",
  *      uniqueConstraints={
  *          @ORM\UniqueConstraint(name="route_parameter", columns={"route_id", "parameter"})
@@ -54,19 +54,19 @@ class RouteParameter {
     protected $defaultValue;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\Route", inversedBy="parameters")
+     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilder\Entity\Route", inversedBy="parameters")
      * @ORM\JoinColumn(name="route_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     protected $route;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType")
+     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilder\Entity\RouteParameterType")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
      */
     protected $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter", mappedBy="parameter")
+     * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilder\Entity\MenuItemParameter", mappedBy="parameter")
      */
     protected $values;
 
@@ -141,36 +141,36 @@ class RouteParameter {
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\Route $route
+     * @param \Forci\Bundle\MenuBuilder\Entity\Route $route
      *
      * @return $this
      */
-    public function setRoute(\Forci\Bundle\MenuBuilderBundle\Entity\Route $route) {
+    public function setRoute(\Forci\Bundle\MenuBuilder\Entity\Route $route) {
         $this->route = $route;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\Route
+     * @return \Forci\Bundle\MenuBuilder\Entity\Route
      */
     public function getRoute() {
         return $this->route;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType $type
+     * @param \Forci\Bundle\MenuBuilder\Entity\RouteParameterType $type
      *
      * @return $this
      */
-    public function setType(\Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType $type) {
+    public function setType(\Forci\Bundle\MenuBuilder\Entity\RouteParameterType $type) {
         $this->type = $type;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType
+     * @return \Forci\Bundle\MenuBuilder\Entity\RouteParameterType
      */
     public function getType() {
         return $this->type;
@@ -179,11 +179,11 @@ class RouteParameter {
     /**
      * Add booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $value
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $value
      *
      * @return $this
      */
-    public function addValue(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $value) {
+    public function addValue(\Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $value) {
         $this->values[] = $value;
 
         return $this;
@@ -192,9 +192,9 @@ class RouteParameter {
     /**
      * Remove booking.
      *
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $value
+     * @param \Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $value
      */
-    public function removeValue(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItemParameter $value) {
+    public function removeValue(\Forci\Bundle\MenuBuilder\Entity\MenuItemParameter $value) {
         $this->values->removeElement($value);
     }
 

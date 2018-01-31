@@ -11,13 +11,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Repository;
+namespace Forci\Bundle\MenuBuilder\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Forci\Bundle\MenuBuilderBundle\Entity\Route;
-use Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter;
-use Forci\Bundle\MenuBuilderBundle\Entity\RouteParameterType;
-//use Forci\Bundle\MenuBuilderBundle\Filter\Route\RouteParameterFilter;
+use Forci\Bundle\MenuBuilder\Entity\Route;
+use Forci\Bundle\MenuBuilder\Entity\RouteParameter;
+use Forci\Bundle\MenuBuilder\Entity\RouteParameterType;
+//use Forci\Bundle\MenuBuilder\Filter\Route\RouteParameterFilter;
 use Wucdbm\Bundle\QuickUIBundle\Repository\QuickUIRepositoryTrait;
 
 class RouteParameterRepository extends EntityRepository {

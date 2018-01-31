@@ -11,10 +11,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Controller;
+namespace Forci\Bundle\MenuBuilder\Controller;
 
-use Forci\Bundle\MenuBuilderBundle\Filter\Route\RouteFilter;
-use Forci\Bundle\MenuBuilderBundle\Form\Route\FilterType;
+use Forci\Bundle\MenuBuilder\Filter\Route\RouteFilter;
+use Forci\Bundle\MenuBuilder\Form\Route\FilterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

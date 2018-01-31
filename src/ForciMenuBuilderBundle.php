@@ -11,9 +11,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle;
+namespace Forci\Bundle\MenuBuilder;
 
-use Forci\Bundle\MenuBuilderBundle\DependencyInjection\Compiler\EntityManagerCompiler;
+use Forci\Bundle\MenuBuilder\DependencyInjection\Compiler\EntityManagerCompiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -11,10 +11,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Twig;
+namespace Forci\Bundle\MenuBuilder\Twig;
 
-use Forci\Bundle\MenuBuilderBundle\Entity\Route;
-use Forci\Bundle\MenuBuilderBundle\Manager\RouteManager;
+use Forci\Bundle\MenuBuilder\Entity\Route;
+use Forci\Bundle\MenuBuilder\Manager\RouteManager;
 
 class RouteExtension extends \Twig_Extension {
 

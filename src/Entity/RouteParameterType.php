@@ -11,12 +11,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Entity;
+namespace Forci\Bundle\MenuBuilder\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilderBundle\Repository\RouteParameterTypeRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\RouteParameterTypeRepository")
  * @ORM\Table(name="_forci__menu_builder_routes_parameters_types")
  */
 class RouteParameterType {

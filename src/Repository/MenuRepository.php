@@ -11,12 +11,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Repository;
+namespace Forci\Bundle\MenuBuilder\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Forci\Bundle\MenuBuilderBundle\Entity\Menu;
-use Forci\Bundle\MenuBuilderBundle\Entity\Route;
-use Forci\Bundle\MenuBuilderBundle\Filter\Menu\MenuFilter;
+use Forci\Bundle\MenuBuilder\Entity\Menu;
+use Forci\Bundle\MenuBuilder\Entity\Route;
+use Forci\Bundle\MenuBuilder\Filter\Menu\MenuFilter;
 use Wucdbm\Bundle\QuickUIBundle\Repository\QuickUIRepositoryTrait;
 
 class MenuRepository extends EntityRepository {

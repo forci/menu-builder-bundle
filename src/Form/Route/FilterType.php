@@ -11,11 +11,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Form\Route;
+namespace Forci\Bundle\MenuBuilder\Form\Route;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Forci\Bundle\MenuBuilderBundle\Filter\Route\RouteFilter;
+use Forci\Bundle\MenuBuilder\Filter\Route\RouteFilter;
 use Wucdbm\Bundle\QuickUIBundle\Form\Filter\BaseFilterType;
 use Wucdbm\Bundle\QuickUIBundle\Form\Filter\ChoiceFilterType;
 use Wucdbm\Bundle\QuickUIBundle\Form\Filter\TextFilterType;

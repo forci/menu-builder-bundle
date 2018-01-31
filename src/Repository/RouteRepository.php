@@ -11,11 +11,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Repository;
+namespace Forci\Bundle\MenuBuilder\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Forci\Bundle\MenuBuilderBundle\Entity\Route;
-use Forci\Bundle\MenuBuilderBundle\Filter\Route\RouteFilter;
+use Forci\Bundle\MenuBuilder\Entity\Route;
+use Forci\Bundle\MenuBuilder\Filter\Route\RouteFilter;
 use Wucdbm\Bundle\QuickUIBundle\Repository\QuickUIRepositoryTrait;
 
 class RouteRepository extends EntityRepository {

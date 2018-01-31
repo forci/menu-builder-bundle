@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Filter\Route;
+namespace Forci\Bundle\MenuBuilder\Filter\Route;
 
 use Wucdbm\Bundle\QuickUIBundle\Filter\AbstractFilter;
 

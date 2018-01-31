@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Repository;
+namespace Forci\Bundle\MenuBuilder\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Wucdbm\Bundle\QuickUIBundle\Repository\QuickUIRepositoryTrait;
