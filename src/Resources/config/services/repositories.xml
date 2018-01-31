@@ -2,19 +2,27 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="forci_menu_bundle.repo.menus.entity_class">Forci\Bundle\MenuBuilder\Entity\Menu</parameter>
+        <parameter key="forci_menu_bundle.repo.menus.repository_class">Forci\Bundle\MenuBuilder\Repository\MenuRepository</parameter>
+
+        <parameter key="forci_menu_bundle.repo.menus_items.entity_class">Forci\Bundle\MenuBuilder\Entity\MenuItem</parameter>
+        <parameter key="forci_menu_bundle.repo.menus_items.repository_class">Forci\Bundle\MenuBuilder\Repository\MenuItemRepository</parameter>
+    </parameters>
+
     <services>
 
         <service id="forci_menu_builder.repo.abstract" abstract="true" public="true">
             <factory service="forci_menu_builder.entity_manager" method="getRepository"/>
         </service>
 
-        <service id="forci_menu_builder.repo.menus" class="Forci\Bundle\MenuBuilder\Repository\MenuRepository"
+        <service id="forci_menu_builder.repo.menus" class="%forci_menu_bundle.repo.menus.repository_class%"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilder\Entity\Menu</argument>
+            <argument>%forci_menu_bundle.repo.menus.entity_class%</argument>
         </service>
-        <service id="forci_menu_builder.repo.menus_items" class="Forci\Bundle\MenuBuilder\Repository\MenuItemRepository"
+        <service id="forci_menu_builder.repo.menus_items" class="%forci_menu_bundle.repo.menus_items.repository_class%"
                  parent="forci_menu_builder.repo.abstract">
-            <argument>Forci\Bundle\MenuBuilder\Entity\MenuItem</argument>
+            <argument>%forci_menu_bundle.repo.menus_items.entity_class%</argument>
         </service>
         <service id="forci_menu_builder.repo.menus_items_parameters" class="Forci\Bundle\MenuBuilder\Repository\MenuItemParameterRepository"
                  parent="forci_menu_builder.repo.abstract">
