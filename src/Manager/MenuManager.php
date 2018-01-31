@@ -70,6 +70,7 @@ class MenuManager {
         if ($item->getUrl()) {
             return $item->getUrl();
         }
+
         $route = $item->getRoute()->getRoute();
         $parameters = [];
         /** @var MenuItemParameter $parameter */

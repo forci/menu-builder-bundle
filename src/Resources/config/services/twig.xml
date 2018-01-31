@@ -10,7 +10,7 @@
         </service>
         <service id="forci_menu_builder.twig.menu_item" class="Forci\Bundle\MenuBuilder\Twig\MenuItemExtension" public="true">
             <tag name="twig.extension"/>
-            <argument type="service" id="router"/>
+            <argument type="service" id="forci_menu_builder.manager.menus"/>
         </service>
         <service id="forci_menu_builder.twig.route" class="Forci\Bundle\MenuBuilder\Twig\RouteExtension" public="true">
             <tag name="twig.extension"/>

@@ -13,20 +13,17 @@
 
 namespace Forci\Bundle\MenuBuilder\Twig;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Forci\Bundle\MenuBuilder\Entity\MenuItem;
-use Forci\Bundle\MenuBuilder\Entity\MenuItemParameter;
+use Forci\Bundle\MenuBuilder\Manager\MenuManager;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class MenuItemExtension extends \Twig_Extension {
 
-    /**
-     * @var Router
-     */
-    protected $router;
+    /** @var MenuManager */
+    protected $manager;
 
-    public function __construct(Router $router) {
-        $this->router = $router;
+    public function __construct(MenuManager $manager) {
+        $this->manager = $manager;
     }
 
     public function getFilters() {
@@ -52,39 +49,7 @@ class MenuItemExtension extends \Twig_Extension {
     }
 
     protected function url(MenuItem $item, $type) {
-        $route = $item->getRoute()->getRoute();
-        $parameters = [];
-        /** @var MenuItemParameter $parameter */
-        foreach ($item->getParameters() as $parameter) {
-            $key = $parameter->getParameter()->getParameter();
-            $parameters[$key] = $this->getValue($parameter);
-        }
-
-        return $this->router->generate($route, $parameters, $type);
-    }
-
-    protected function getValue(MenuItemParameter $parameter) {
-        if ($parameter->getUseValueFromContext()) {
-            $routeParameter = $parameter->getParameter();
-
-            // If the current context has this parameter, use it
-            if ($this->router->getContext()->hasParameter($routeParameter->getParameter())) {
-                return $this->router->getContext()->getParameter($routeParameter->getParameter());
-            }
-
-            // Otherwise, use the default value for this route
-            // Note: This might change, and upon importing routes anew
-            // The URLs generated will now use the new default value
-            $default = $routeParameter->getDefaultValue();
-            if ($default) {
-                return $default;
-            }
-        }
-
-        // If no value was found in the context or the default route parameter value
-        // return the last copy of its default
-
-        return $parameter->getValue();
+        return $this->manager->generateMenuItemUrl($item, $type);
     }
 
 }
