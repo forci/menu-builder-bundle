@@ -21,7 +21,7 @@
         "wucdbm/php-cs-fixers": "~0.2"
     },
     "autoload": {
-        "psr-4": { "Forci\\Bundle\\MenuBuilderBundle\\": "src" }
+        "psr-4": { "Forci\\Bundle\\MenuBuilder\\": "src" }
     },
     "config": {
         "bin-dir": "bin"
