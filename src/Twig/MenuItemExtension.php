@@ -87,7 +87,4 @@ class MenuItemExtension extends \Twig_Extension {
         return $parameter->getValue();
     }
 
-    public function getName() {
-        return 'forci_menu_builder_menu_item';
-    }
 }

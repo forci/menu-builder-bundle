@@ -75,11 +75,4 @@ class MenuExtension extends \Twig_Extension {
         return $this->manager->findAll();
     }
 
-    public function getAlias() {
-        return 'forci_menu_builder_menu';
-    }
-
-    public function getName() {
-        return 'forci_menu_builder_menu';
-    }
 }

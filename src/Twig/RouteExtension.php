@@ -47,7 +47,4 @@ class RouteExtension extends \Twig_Extension {
         return sprintf('%s (%s)', implode(' ', $words), $route->getRoute());
     }
 
-    public function getName() {
-        return 'forci_menu_builder_route';
-    }
 }
