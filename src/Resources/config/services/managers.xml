@@ -2,6 +2,10 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="forci_menu_bundle.manager.menus.class">Forci\Bundle\MenuBuilder\Manager\MenuManager</parameter>
+    </parameters>
+    
     <services>
 
         <service id="forci_menu_builder.manager.routes" class="Forci\Bundle\MenuBuilder\Manager\RouteManager" public="true">
@@ -11,7 +15,7 @@
             <argument type="service" id="forci_menu_builder.repo.menus_items"/>
         </service>
 
-        <service id="forci_menu_builder.manager.menus" class="Forci\Bundle\MenuBuilder\Manager\MenuManager" public="true">
+        <service id="forci_menu_builder.manager.menus" class="%forci_menu_bundle.manager.menus.class%" public="true">
             <argument type="service" id="forci_menu_builder.repo.menus"/>
             <argument type="service" id="router"/>
         </service>
