@@ -48,7 +48,7 @@ class MenuItemRepository extends EntityRepository {
             $em->flush();
 
             $conn->commit();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $conn->rollBack();
             throw $e;
         }
@@ -86,7 +86,7 @@ class MenuItemRepository extends EntityRepository {
             $em->flush();
 
             $conn->commit();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $conn->rollBack();
             throw $e;
         }

@@ -13,6 +13,7 @@
 
         <service id="forci_menu_builder.manager.menus" class="Forci\Bundle\MenuBuilderBundle\Manager\MenuManager" public="true">
             <argument type="service" id="forci_menu_builder.repo.menus"/>
+            <argument type="service" id="router"/>
         </service>
 
     </services>

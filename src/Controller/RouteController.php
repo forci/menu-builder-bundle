@@ -139,7 +139,7 @@ class RouteController extends Controller {
             }
 
             return $this->redirectToRoute('forci_menu_builder_dashboard');
-        } catch (\Exception $ex) {
+        } catch (\Throwable $ex) {
             if ($request->isXmlHttpRequest()) {
                 return $this->json([
                     'success' => true,

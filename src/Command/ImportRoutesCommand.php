@@ -21,14 +21,14 @@ use Symfony\Component\Routing\Router;
 class ImportRoutesCommand extends ContainerAwareCommand {
 
     protected function configure() {
-        $this->setName('forci_menu_builder:import_routes')
+        $this->setName('wucdbm_menu_builder:import_routes')
             ->setDescription('Import routes from your application');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
         $container = $this->getContainer();
 
-        $output->write('<info>ForciMenuBuilder: Importing routes...</info>');
+        $output->write('<info>WucdbmMenuBuilder: Importing routes...</info>');
 
         /** @var $router Router */
         $router = $container->get('router');

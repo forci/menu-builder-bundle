@@ -13,7 +13,6 @@
 
 namespace Forci\Bundle\MenuBuilderBundle\Controller;
 
-use Forci\Bundle\MenuBuilderBundle\Entity\Menu;
 use Forci\Bundle\MenuBuilderBundle\Filter\Menu\MenuFilter;
 use Forci\Bundle\MenuBuilderBundle\Form\Menu\CreateType;
 use Forci\Bundle\MenuBuilderBundle\Form\Menu\FilterType;
@@ -40,7 +39,10 @@ class MenuController extends Controller {
         return $this->render('@ForciMenuBuilder/Menu/list.html.twig', $data);
     }
 
-    public function refreshListRowAction(Menu $menu) {
+    public function refreshListRowAction($id) {
+        $repo = $this->container->get('forci_menu_builder.repo.menus');
+        $menu = $repo->findOneById($id);
+
         $data = [
             'menu' => $menu
         ];
@@ -57,8 +59,8 @@ class MenuController extends Controller {
     }
 
     protected function system($id, $boolean) {
-        $repo = $this->container->get('forci_menu_builder.repo.menus');
-        $menu = $repo->findOneById($id);
+        $manager = $this->container->get('forci_menu_builder.manager.menus');
+        $menu = $manager->findOneById($id);
 
         if (!$menu) {
             return $this->json([
@@ -69,7 +71,7 @@ class MenuController extends Controller {
         }
 
         $menu->setIsSystem($boolean);
-        $repo->save($menu);
+        $manager->save($menu);
 
         return $this->json([
             'success' => true,
@@ -77,7 +79,39 @@ class MenuController extends Controller {
         ]);
     }
 
-    public function previewAction(Menu $menu) {
+    public function makeApiVisibleAction($id) {
+        return $this->apiVisible($id, true);
+    }
+
+    public function makeApiInvisibleAction($id) {
+        return $this->apiVisible($id, false);
+    }
+
+    protected function apiVisible($id, $boolean) {
+        $manager = $this->container->get('forci_menu_builder.manager.menus');
+        $menu = $manager->findOneById($id);
+
+        if (!$menu) {
+            return $this->json([
+                'witter' => [
+                    'text' => 'Menu not found'
+                ]
+            ]);
+        }
+
+        $menu->setIsApiVisible($boolean);
+        $manager->save($menu);
+
+        return $this->json([
+            'success' => true,
+            'refresh' => true
+        ]);
+    }
+
+    public function previewAction($id) {
+        $repo = $this->container->get('forci_menu_builder.repo.menus');
+        $menu = $repo->findOneById($id);
+
         $data = [
             'menu' => $menu
         ];
@@ -94,22 +128,22 @@ class MenuController extends Controller {
             return new Response('Error - Empty value', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $repo = $this->container->get('forci_menu_builder.repo.menus');
-        $menu = $repo->findOneById($id);
+        $manager = $this->container->get('forci_menu_builder.manager.menus');
+        $menu = $manager->findOneById($id);
         $menu->setName($name);
-        $repo->save($menu);
+        $manager->save($menu);
 
         return new Response();
     }
 
     public function createAction(Request $request) {
-        $menu = new Menu();
+        $manager = $this->container->get('forci_menu_builder.manager.menus');
+        $menu = $manager->create();
         $form = $this->createForm(CreateType::class, $menu);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $manager = $this->container->get('forci_menu_builder.manager.menus');
             $manager->save($menu);
 
             return $this->redirectToRoute('forci_menu_builder_menu_edit', [

@@ -120,7 +120,7 @@ class RouteRepository extends EntityRepository {
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findOneById($id) {
+    public function findOneById($id): ?Route {
         $builder = $this->getQueryBuilder()
             ->andWhere('r.id = :id')
             ->setParameter('id', $id);

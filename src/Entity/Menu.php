@@ -45,6 +45,16 @@ class Menu {
     protected $isSystem = false;
 
     /**
+     * @ORM\Column(name="is_api_visible", type="boolean", nullable=false)
+     */
+    protected $isApiVisible = false;
+
+    /**
+     * @ORM\Column(name="date_modified", type="datetime", nullable=false)
+     */
+    protected $dateModified;
+
+    /**
      * @ORM\OneToMany(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItem", mappedBy="menu")
      * @ORM\OrderBy({"ord" = "ASC"})
      */
@@ -55,6 +65,21 @@ class Menu {
      */
     public function __construct() {
         $this->items = new ArrayCollection();
+        $this->dateModified = new \DateTime();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateModified() {
+        return $this->dateModified;
+    }
+
+    /**
+     * @param \DateTime $dateModified
+     */
+    public function setDateModified(\DateTime $dateModified) {
+        $this->dateModified = $dateModified;
     }
 
     /**
@@ -135,5 +160,19 @@ class Menu {
      */
     public function setIsSystem($isSystem) {
         $this->isSystem = $isSystem;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsApiVisible() {
+        return $this->isApiVisible;
+    }
+
+    /**
+     * @param mixed $isApiVisible
+     */
+    public function setIsApiVisible($isApiVisible) {
+        $this->isApiVisible = $isApiVisible;
     }
 }

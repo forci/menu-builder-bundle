@@ -35,14 +35,14 @@ class MenuItem {
     protected $name;
 
     /**
+     * @ORM\Column(name="url", type="text", nullable=true)
+     */
+    protected $url;
+
+    /**
      * @ORM\Column(name="ord", type="smallint", options={"unsigned"=true}, nullable=false)
      */
     protected $ord = 0;
-
-    /**
-     * @ORM\Column(name="use_current_locale", type="boolean", nullable=false)
-     */
-    protected $useCurrentLocale = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\Menu", inversedBy="items")
@@ -52,7 +52,7 @@ class MenuItem {
 
     /**
      * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\Route", inversedBy="items")
-     * @ORM\JoinColumn(name="route_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     * @ORM\JoinColumn(name="route_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      */
     protected $route;
 
@@ -121,11 +121,11 @@ class MenuItem {
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\Route $route
+     * @param \Forci\Bundle\MenuBuilderBundle\Entity\Route|null $route
      *
      * @return $this
      */
-    public function setRoute(\Forci\Bundle\MenuBuilderBundle\Entity\Route $route) {
+    public function setRoute(\Forci\Bundle\MenuBuilderBundle\Entity\Route $route = null) {
         $this->route = $route;
 
         return $this;
@@ -223,14 +223,14 @@ class MenuItem {
     /**
      * @return mixed
      */
-    public function getUseCurrentLocale() {
-        return $this->useCurrentLocale;
+    public function getUrl() {
+        return $this->url;
     }
 
     /**
-     * @param mixed $useCurrentLocale
+     * @param mixed $url
      */
-    public function setUseCurrentLocale($useCurrentLocale) {
-        $this->useCurrentLocale = $useCurrentLocale;
+    public function setUrl($url) {
+        $this->url = $url;
     }
 }
