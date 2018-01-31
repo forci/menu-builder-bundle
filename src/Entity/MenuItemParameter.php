@@ -1,23 +1,20 @@
 <?php
 
 /*
- * This file is part of the ForciMenuBuilderBundle package.
+ * This file is part of the MenuBuilderBundle package.
  *
- * Copyright (c) Forci Web Consulting Ltd.
- *
- * Author Martin Kirilov <martin@forci.com>
+ * (c) Martin Kirilov <wucdbm@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\MenuBuilderBundle\Entity;
+namespace Wucdbm\Bundle\MenuBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilderBundle\Repository\MenuItemParameterRepository")
- * @ORM\Table(name="_forci__menu_builder_menus_items_parameters",
  *      uniqueConstraints={
  *          @ORM\UniqueConstraint(name="item_parameter", columns={"item_id", "parameter_id"})
  *      }
@@ -43,13 +40,13 @@ class MenuItemParameter {
     protected $useValueFromContext = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\MenuItem", inversedBy="parameters")
+     * @ORM\ManyToOne(targetEntity="Wucdbm\Bundle\MenuBuilderBundle\Entity\MenuItem", inversedBy="parameters")
      * @ORM\JoinColumn(name="item_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     protected $item;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter", inversedBy="values")
+     * @ORM\ManyToOne(targetEntity="Wucdbm\Bundle\MenuBuilderBundle\Entity\RouteParameter", inversedBy="values")
      * @ORM\JoinColumn(name="parameter_id", referencedColumnName="id", nullable=false)
      */
     protected $parameter;
@@ -90,38 +87,39 @@ class MenuItemParameter {
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item
+     * @param \Wucdbm\Bundle\MenuBuilderBundle\Entity\MenuItem $item
      *
      * @return $this
      */
-    public function setItem(\Forci\Bundle\MenuBuilderBundle\Entity\MenuItem $item) {
+    public function setItem(\Wucdbm\Bundle\MenuBuilderBundle\Entity\MenuItem $item) {
         $this->item = $item;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\MenuItem
+     * @return \Wucdbm\Bundle\MenuBuilderBundle\Entity\MenuItem
      */
     public function getItem() {
         return $this->item;
     }
 
     /**
-     * @param \Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter
+     * @param \Wucdbm\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter
      *
      * @return $this
      */
-    public function setParameter(\Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter = null) {
+    public function setParameter(\Wucdbm\Bundle\MenuBuilderBundle\Entity\RouteParameter $parameter = null) {
         $this->parameter = $parameter;
 
         return $this;
     }
 
     /**
-     * @return \Forci\Bundle\MenuBuilderBundle\Entity\RouteParameter
+     * @return \Wucdbm\Bundle\MenuBuilderBundle\Entity\RouteParameter
      */
     public function getParameter() {
         return $this->parameter;
     }
+
 }
