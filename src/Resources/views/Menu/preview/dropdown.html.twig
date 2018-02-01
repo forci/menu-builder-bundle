@@ -10,7 +10,7 @@
         </ul>
     </li>
 {% else %}
-    <li class="{{ item.route.route|isRoute('active') }}">
+    <li class="{{ item.route ? item.route.route|isRoute('active') : '' }}">
         <a href="{{ item|menuItemPath }}">
             {{ item.name }}
         </a>
