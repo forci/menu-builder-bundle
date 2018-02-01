@@ -16,9 +16,9 @@
             {% include '@ForciMenuBuilder/Menu/preview/list.html.twig' with {items: menu|menuTopLevelItems} %}
             <br>
             <code>
-                {% raw %}
+                {% verbatim %}
                     {% include '@ForciMenuBuilder/Menu/preview/list.html.twig' with {items: menu|menuTopLevelItems} %}
-                {% endraw %}
+                {% endverbatim %}
             </code>
         </div>
         <div class="col-sm-12">
@@ -30,9 +30,9 @@
             {% include '@ForciMenuBuilder/Menu/preview/pills.html.twig' with {items: menu|menuTopLevelItems} %}
             <br>
             <code>
-                {% raw %}
+                {% verbatim %}
                     {% include '@ForciMenuBuilder/Menu/preview/pills.html.twig' with {items: menu|menuTopLevelItems} %}
-                {% endraw %}
+                {% endverbatim %}
             </code>
         </div>
         <div class="col-sm-12">
@@ -51,7 +51,7 @@
                 </ul>
             </div>
             <br>
-            <textarea class="form-control" rows="12">{% raw %}
+            <textarea class="form-control" rows="12">{% verbatim %}
                     <div class="dropdown">
                         <a role="button" data-toggle="dropdown" class="btn btn-primary" href="javascript:;">
                             Some Dropdown
@@ -63,7 +63,7 @@
                             {% endfor %}
                         </ul>
                     </div>
-                {% endraw %}</textarea>
+                {% endverbatim %}</textarea>
             <style type="text/css" scoped="scoped">
                 .dropdown-submenu {
                     position: relative;
