@@ -33,13 +33,18 @@ class RouteExtension extends \Twig_Extension {
         ];
     }
 
-    public function routeName(Route $route) {
+    public function routeName(Route $route = null) {
+        if (!$route) {
+            return 'This is an external URL';
+        }
+
         if ($route->getName()) {
             return sprintf('%s (%s)', $route->getName(), $route->getRoute());
         }
 
         $routeName = str_replace(['_', '.'], ' ', $route->getRoute());
         $words = explode(' ', $routeName);
+
         foreach ($words as $key => $word) {
             $words[$key] = ucfirst($word);
         }
