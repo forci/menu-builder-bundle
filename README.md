@@ -3,8 +3,7 @@ A simple, standalone Menu Builder for Symfony 2 Applications
 
 ## Upcoming / TODO
 
-- TODO: Depend on `wucdbm/quick-ui-bundle` instead of `wucdbm/wucdbm-bundle`
-- TODO: Introduce cache. Use either WucdbmBundle or Symfony's Cache component, if it finally gets native Memcached impl.
+- TODO: Introduce cache.
 
 ## Minor TODO
 - Put docs inside of this bundle, this is the Core and is for developers only. The Client one is meant to be your base client, if that does not satisfy you, build your own with your own user experience
@@ -14,22 +13,19 @@ A simple, standalone Menu Builder for Symfony 2 Applications
 
 Having properly configured uglifycss and uglifyjs is a requirement for production.
 
-Add this bundle to your AppKernel.php `new \Wucdbm\Bundle\MenuBuilderBundle\WucdbmMenuBuilderBundle()`
-
-In your config.yml, add `WucdbmMenuBuilderBundle` to your assetic bundles, as well as your doctrine mapping (if not automatic)
+Add this bundle to your AppKernel.php `new \Forci\Bundle\MenuBuilder\ForciMenuBuilderBundle()`
+Add wucdbm's QuickUIBundle to your AppKernel.php `new \Wucdbm\Bundle\QuickUIBundle\WucdbmQuickUIBundle()`
 
 Execute `app/console doctrine:schema:update --dump-sql` and after verifying what is being executed, execute again with --force.
 Alternatively, use doctrine migrations via the DoctrineMigrations bundle.
 
-Execute `app/console wucdbm_menu_builder:import_routes` to import your current routes from your symfony application into the tables created by the bundle.
-
-Alternatively, add `Wucdbm\\Bundle\\MenuBuilderBundle\\Composer\\ScriptHandler::importRoutes` to your composer.json's `post-install-cmd` or `post-update-cmd` command list and this will be executed after every install or update
+Execute `app/console forci_menu_builder:import_routes` to import your current routes from your symfony application into the tables created by the bundle.
 
 Once this has been done, you can start using the bundle. Simply register it in your routing.yml like so:
 
 ```
 wucdbm_builder:
-    resource: "@WucdbmMenuBuilderBundle/Resources/config/routing.yml"
+    resource: "@ForciMenuBuilderBundle/Resources/config/routing.yml"
     prefix: /admin/builder
 ```
 
@@ -38,10 +34,10 @@ Assuming that /admin is protected by a firewall, the builder should be secure an
 You can create a link to the builder using `{{ path('forci_menu_builder_dashboard') }}`, or embed it into your admin UI via an iframe like so `<iframe src="{{ path('forci_menu_builder_dashboard') }}" style="border: 0; width: 100%; height: 100%;"></iframe>`
 
 The User Interface is pretty anemic as this bundle only implements the core functionality and the administrative (for developers) functionality. 
-If you want to let users (non-developers) manipulate menus, check out the `WucdbmMenuBuilderClientBundle()`
+If you want to let users (non-developers) manipulate menus, check out the `ForciMenuBuilderClientBundle()`
 Once you have created a menu, you can access it in your application by calling the `getMenu` 
-twig function, which will return `Wucdbm\Bundle\MenuBuilderBundle\Entity\Menu` or `null`. 
-A menu contains `Wucdbm\Bundle\MenuBuilderBundle\Entity\MenuItem`s.
+twig function, which will return `Forci\Bundle\MenuBuilder\Entity\Menu` or `null`. 
+A menu contains `Forci\Bundle\MenuBuilder\Entity\MenuItem`s.
 Menu items can be nested, ie they have a parent and children. 
 A good idea when listing the top-level menu is to only list items whose parent is null:
 
