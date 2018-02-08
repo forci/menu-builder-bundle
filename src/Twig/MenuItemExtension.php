@@ -51,5 +51,4 @@ class MenuItemExtension extends \Twig_Extension {
     protected function url(MenuItem $item, $type) {
         return $this->manager->generateMenuItemUrl($item, $type);
     }
-
 }

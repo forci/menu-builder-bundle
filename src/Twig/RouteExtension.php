@@ -51,5 +51,4 @@ class RouteExtension extends \Twig_Extension {
 
         return sprintf('%s (%s)', implode(' ', $words), $route->getRoute());
     }
-
 }

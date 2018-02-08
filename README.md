@@ -92,10 +92,8 @@ If you want to have a dynamic default parameter for some of your routes, for ins
 
 In config.yml:
 ```
-parameters:
-    locale:           en
 framework:
-    default_locale:  %locale%
+    default_locale:  en
 ```
 
 In routing.yml:
@@ -107,9 +105,9 @@ some_resource:
     requirements:
         _locale: "en|de|ru"
     defaults:
-        _locale: %locale%
+        _locale: %kernel.default_locale%
 ```
-Generally, you do NOT need the `defaults: {_locale: %locale%}` part because you already have the default locale configured in your framework bundle config, but this will only work for `_locale`
+Generally, you do NOT need the `defaults: {_locale: %kernel.default_locale%}` part because you already have the default locale configured in your framework bundle config, but this will only work for `_locale`
 However, with this approach the default value for the `_locale` route parameter will be available to the menu builder when importing routes.
 When building a link, you may choose to leave the field blank if there is a default parameter. 
 This will allow you to change the default value for that parameter at a later point, WITHOUT having to update menu items. 

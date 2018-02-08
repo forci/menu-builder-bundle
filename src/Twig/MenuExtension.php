@@ -74,5 +74,4 @@ class MenuExtension extends \Twig_Extension {
     public function getMenus() {
         return $this->manager->findAll();
     }
-
 }
