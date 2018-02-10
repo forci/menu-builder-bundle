@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\RouteParameterTypeRepository")
- * @ORM\Table(name="_forci__menu_builder_routes_parameters_types")
+ * @ORM\Table(name="_forci__menu_builder_routes_parameters_types", options={"collate"="utf8mb4_unicode_ci", "charset"="utf8mb4"})
  */
 class RouteParameterType {
 

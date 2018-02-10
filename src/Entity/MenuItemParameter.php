@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\MenuItemParameterRepository")
- * @ORM\Table(name="_forci__menu_builder_menus_items_parameters",
+ * @ORM\Table(name="_forci__menu_builder_menus_items_parameters", options={"collate"="utf8mb4_unicode_ci", "charset"="utf8mb4"},
  *      uniqueConstraints={
  *          @ORM\UniqueConstraint(name="item_parameter", columns={"item_id", "parameter_id"})
  *      }

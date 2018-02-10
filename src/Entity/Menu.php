@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\MenuRepository")
- * @ORM\Table(name="_forci__menu_builder_menus")
+ * @ORM\Table(name="_forci__menu_builder_menus", options={"collate"="utf8mb4_unicode_ci", "charset"="utf8mb4"})
  */
 class Menu {
 

@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Forci\Bundle\MenuBuilder\Repository\RouteRepository")
- * @ORM\Table(name="_forci__menu_builder_routes",
+ * @ORM\Table(name="_forci__menu_builder_routes", options={"collate"="utf8mb4_unicode_ci", "charset"="utf8mb4"},
  *      uniqueConstraints={
  *          @ORM\UniqueConstraint(name="route", columns={"route"})
  *      }
