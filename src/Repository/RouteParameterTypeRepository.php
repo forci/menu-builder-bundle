@@ -66,7 +66,7 @@ class RouteParameterTypeRepository extends EntityRepository {
         $type->setName($name);
         $em = $this->getEntityManager();
         $em->persist($type);
-        $em->flush($type);
+        $em->flush();
 
         return $type;
     }

@@ -146,12 +146,12 @@ class RouteRepository extends EntityRepository {
     public function save(Route $route) {
         $em = $this->getEntityManager();
         $em->persist($route);
-        $em->flush($route);
+        $em->flush();
     }
 
     public function remove(Route $route) {
         $em = $this->getEntityManager();
         $em->remove($route);
-        $em->flush($route);
+        $em->flush();
     }
 }

@@ -125,12 +125,12 @@ class RouteParameterRepository extends EntityRepository {
     public function save(RouteParameter $parameter) {
         $em = $this->getEntityManager();
         $em->persist($parameter);
-        $em->flush($parameter);
+        $em->flush();
     }
 
     public function remove(RouteParameter $parameter) {
         $em = $this->getEntityManager();
         $em->remove($parameter);
-        $em->flush($parameter);
+        $em->flush();
     }
 }
