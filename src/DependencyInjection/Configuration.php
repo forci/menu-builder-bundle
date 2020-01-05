@@ -19,8 +19,8 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 class Configuration implements ConfigurationInterface {
 
     public function getConfigTreeBuilder() {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('forci_menu_builder');
+        $treeBuilder = new TreeBuilder('forci_menu_builder');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
