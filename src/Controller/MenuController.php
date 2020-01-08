@@ -151,7 +151,7 @@ class MenuController extends AbstractController {
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->menuManager->save($menu);
 
             return $this->redirectToRoute('forci_menu_builder_menu_edit', [
@@ -174,7 +174,7 @@ class MenuController extends AbstractController {
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->menuManager->save($menu);
 
             return $this->redirectToRoute('forci_menu_builder_menu_edit', [
