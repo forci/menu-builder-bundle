@@ -33,16 +33,14 @@ class FilterType extends BaseFilterType {
                 'choices' => [
                     'Only NOT named' => RouteFilter::IS_NAMED_FALSE,
                     'Only named' => RouteFilter::IS_NAMED_TRUE
-                ],
-                'choices_as_values' => true
+                ]
             ])
             ->add('isSystem', ChoiceFilterType::class, [
                 'placeholder' => 'Type Filter',
                 'choices' => [
                     'Public Routes' => RouteFilter::IS_SYSTEM_FALSE,
                     'System Routes' => RouteFilter::IS_SYSTEM_TRUE
-                ],
-                'choices_as_values' => true
+                ]
             ])
             ->add('route', TextFilterType::class, [
                 'placeholder' => 'Route'

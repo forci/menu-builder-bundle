@@ -1,0 +1,21 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <defaults autowire="true" autoconfigure="true" public="true"/>
+
+        <instanceof id="Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+            <tag name="controller.service_arguments"/>
+        </instanceof>
+
+        <prototype namespace="Forci\Bundle\MenuBuilder\Controller\" resource="../../Controller">
+            <bind key="$menuRepository" type="service" id="forci_menu_builder.repo.menus"/>
+            <bind key="$menuManager" type="service" id="forci_menu_builder.manager.menus"/>
+            <bind key="$routeRepository" type="service" id="forci_menu_builder.repo.routes"/>
+            <bind key="$routeParameterRepository" type="service" id="forci_menu_builder.repo.routes_parameters"/>
+        </prototype>
+
+    </services>
+</container>

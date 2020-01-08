@@ -1,6 +1,6 @@
 forci_menu_builder_dashboard:
     path:        /
-    defaults:    { _controller: ForciMenuBuilderBundle:Dashboard:dashboard }
+    controller: Forci\Bundle\MenuBuilder\Controller\DashboardController:dashboardAction
 
 forci_menu_builder_route:
     resource: routing/route.yml

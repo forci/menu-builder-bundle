@@ -13,9 +13,9 @@
 
 namespace Forci\Bundle\MenuBuilder\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class DashboardController extends Controller {
+class DashboardController extends AbstractController {
 
     public function dashboardAction() {
         return $this->render('@ForciMenuBuilder/Dashboard/dashboard.html.twig');

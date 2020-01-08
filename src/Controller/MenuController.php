@@ -16,19 +16,33 @@ namespace Forci\Bundle\MenuBuilder\Controller;
 use Forci\Bundle\MenuBuilder\Filter\Menu\MenuFilter;
 use Forci\Bundle\MenuBuilder\Form\Menu\CreateType;
 use Forci\Bundle\MenuBuilder\Form\Menu\FilterType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Forci\Bundle\MenuBuilder\Manager\MenuManager;
+use Forci\Bundle\MenuBuilder\Repository\MenuRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MenuController extends Controller {
+class MenuController extends AbstractController {
+    
+    /** @var MenuManager */
+    private $menuManager;
+    
+    /** @var MenuRepository */
+    private $menuRepository;
+
+    public function __construct(
+        MenuManager $menuManager, MenuRepository $menuRepository
+    ) {
+        $this->menuManager = $menuManager;
+        $this->menuRepository = $menuRepository;
+    }
 
     public function listAction(Request $request) {
-        $repo = $this->get('forci_menu_builder.repo.menus');
         $filter = new MenuFilter();
         $pagination = $filter->getPagination()->enable();
         $filterForm = $this->createForm(FilterType::class, $filter);
         $filter->load($request, $filterForm);
-        $menus = $repo->filter($filter);
+        $menus = $this->menuRepository->filter($filter);
         $data = [
             'menus' => $menus,
             'filter' => $filter,
@@ -40,8 +54,7 @@ class MenuController extends Controller {
     }
 
     public function refreshListRowAction($id) {
-        $repo = $this->container->get('forci_menu_builder.repo.menus');
-        $menu = $repo->findOneById($id);
+        $menu = $this->menuRepository->findOneById($id);
 
         $data = [
             'menu' => $menu
@@ -59,8 +72,7 @@ class MenuController extends Controller {
     }
 
     protected function system($id, $boolean) {
-        $manager = $this->container->get('forci_menu_builder.manager.menus');
-        $menu = $manager->findOneById($id);
+        $menu = $this->menuManager->findOneById($id);
 
         if (!$menu) {
             return $this->json([
@@ -71,7 +83,7 @@ class MenuController extends Controller {
         }
 
         $menu->setIsSystem($boolean);
-        $manager->save($menu);
+        $this->menuManager->save($menu);
 
         return $this->json([
             'success' => true,
@@ -88,8 +100,7 @@ class MenuController extends Controller {
     }
 
     protected function apiVisible($id, $boolean) {
-        $manager = $this->container->get('forci_menu_builder.manager.menus');
-        $menu = $manager->findOneById($id);
+        $menu = $this->menuManager->findOneById($id);
 
         if (!$menu) {
             return $this->json([
@@ -100,7 +111,7 @@ class MenuController extends Controller {
         }
 
         $menu->setIsApiVisible($boolean);
-        $manager->save($menu);
+        $this->menuManager->save($menu);
 
         return $this->json([
             'success' => true,
@@ -109,8 +120,7 @@ class MenuController extends Controller {
     }
 
     public function previewAction($id) {
-        $repo = $this->container->get('forci_menu_builder.repo.menus');
-        $menu = $repo->findOneById($id);
+        $menu = $this->menuRepository->findOneById($id);
 
         $data = [
             'menu' => $menu
@@ -128,23 +138,21 @@ class MenuController extends Controller {
             return new Response('Error - Empty value', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $manager = $this->container->get('forci_menu_builder.manager.menus');
-        $menu = $manager->findOneById($id);
+        $menu = $this->menuManager->findOneById($id);
         $menu->setName($name);
-        $manager->save($menu);
+        $this->menuManager->save($menu);
 
         return new Response();
     }
 
     public function createAction(Request $request) {
-        $manager = $this->container->get('forci_menu_builder.manager.menus');
-        $menu = $manager->create();
+        $menu = $this->menuManager->create();
         $form = $this->createForm(CreateType::class, $menu);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $manager->save($menu);
+            $this->menuManager->save($menu);
 
             return $this->redirectToRoute('forci_menu_builder_menu_edit', [
                 'id' => $menu->getId()
@@ -160,16 +168,14 @@ class MenuController extends Controller {
     }
 
     public function editAction($id, Request $request) {
-        $repo = $this->get('forci_menu_builder.repo.menus');
-        $menu = $repo->findOneById($id);
+        $menu = $this->menuRepository->findOneById($id);
 
         $form = $this->createForm(CreateType::class, $menu);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $manager = $this->container->get('forci_menu_builder.manager.menus');
-            $manager->save($menu);
+            $this->menuManager->save($menu);
 
             return $this->redirectToRoute('forci_menu_builder_menu_edit', [
                 'id' => $menu->getId()

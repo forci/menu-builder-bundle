@@ -15,20 +15,44 @@ namespace Forci\Bundle\MenuBuilder\Controller;
 
 use Forci\Bundle\MenuBuilder\Filter\Route\RouteFilter;
 use Forci\Bundle\MenuBuilder\Form\Route\FilterType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Forci\Bundle\MenuBuilder\Manager\RouteManager;
+use Forci\Bundle\MenuBuilder\Repository\RouteParameterRepository;
+use Forci\Bundle\MenuBuilder\Repository\RouteRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
-class RouteController extends Controller {
+class RouteController extends AbstractController {
+
+    /** @var RouteManager */
+    private $routeManager;
+
+    /** @var RouteRepository */
+    private $routeRepository;
+
+    /** @var RouteParameterRepository */
+    private $routeParameterRepository;
+
+    /** @var RouterInterface */
+    private $router;
+
+    public function __construct(
+        RouteManager $routeManager, RouteRepository $routeRepository,
+        RouteParameterRepository $routeParameterRepository, RouterInterface $router
+    ) {
+        $this->routeManager = $routeManager;
+        $this->routeRepository = $routeRepository;
+        $this->routeParameterRepository = $routeParameterRepository;
+        $this->router = $router;
+    }
 
     public function listRoutesAction(Request $request) {
-        $repo = $this->get('forci_menu_builder.repo.routes');
         $filter = new RouteFilter();
         $pagination = $filter->getPagination()->enable();
         $filterForm = $this->createForm(FilterType::class, $filter);
         $filter->load($request, $filterForm);
-        $routes = $repo->filter($filter);
+        $routes = $this->routeRepository->filter($filter);
         $data = [
             'routes' => $routes,
             'filter' => $filter,
@@ -40,8 +64,7 @@ class RouteController extends Controller {
     }
 
     public function refreshListRowAction($id) {
-        $repo = $this->get('forci_menu_builder.repo.routes');
-        $route = $repo->findOneById($id);
+        $route = $this->routeRepository->findOneById($id);
 
         $data = [
             'route' => $route
@@ -59,8 +82,7 @@ class RouteController extends Controller {
     }
 
     protected function system($id, $boolean) {
-        $repo = $this->container->get('forci_menu_builder.repo.routes');
-        $route = $repo->findOneById($id);
+        $route = $this->routeRepository->findOneById($id);
 
         if (!$route) {
             return $this->json([
@@ -71,7 +93,7 @@ class RouteController extends Controller {
         }
 
         $route->setIsSystem($boolean);
-        $repo->save($route);
+        $this->routeRepository->save($route);
 
         return $this->json([
             'success' => true,
@@ -88,10 +110,9 @@ class RouteController extends Controller {
             return new Response('Error - Empty value', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $repo = $this->container->get('forci_menu_builder.repo.routes');
-        $route = $repo->findOneById($id);
+        $route = $this->routeRepository->findOneById($id);
         $route->setName($name);
-        $repo->save($route);
+        $this->routeRepository->save($route);
 
         return new Response();
     }
@@ -105,24 +126,18 @@ class RouteController extends Controller {
             return new Response('Error - Empty value', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $repo = $this->container->get('forci_menu_builder.repo.routes_parameters');
-        $parameter = $repo->findOneById($id);
+        $parameter = $this->routeParameterRepository->findOneById($id);
         $parameter->setName($name);
-        $repo->save($parameter);
+        $this->routeParameterRepository->save($parameter);
 
         return new Response();
     }
 
     public function importAction(Request $request) {
-        /** @var $router Router */
-        $router = $this->container->get('router');
-
-        $manager = $this->container->get('forci_menu_builder.manager.routes');
-
         $referer = $request->headers->get('referer');
 
         try {
-            $manager->importRouter($router);
+            $this->routeManager->importRouter($this->router);
 
             if ($request->isXmlHttpRequest()) {
                 return $this->json([

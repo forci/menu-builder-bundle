@@ -1,31 +1,31 @@
 forci_menu_builder_menu_list:
-    path:        /list
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:list }
+    path:       /list
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:listAction
 
 forci_menu_builder_menu_create:
-    path:        /create
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:create }
+    path:       /create
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:createAction
 
 forci_menu_builder_menu_list_row_refresh:
-    path:        /{id}/list/refresh
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:refreshListRow }
+    path:       /{id}/list/refresh
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:refreshListRowAction
 
 forci_menu_builder_menu_edit:
-    path:        /{id}/edit
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:edit }
+    path:       /{id}/edit
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:editAction
 
 forci_menu_builder_menu_name_update:
-    path:        /{id}/update/name
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:updateName }
+    path:       /{id}/update/name
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:updateNameAction
 
 forci_menu_builder_menu_preview:
-    path:        /{id}/preview
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:preview }
+    path:       /{id}/preview
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:previewAction
 
 forci_menu_builder_menu_make_system:
-    path:        /{id}/make/system
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:makeSystem }
+    path:       /{id}/make/system
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:makeSystemAction
 
 forci_menu_builder_menu_make_public:
-    path:        /{id}/make/public
-    defaults:    { _controller: ForciMenuBuilderBundle:Menu:makePublic }
+    path:       /{id}/make/public
+    controller: Forci\Bundle\MenuBuilder\Controller\MenuController:makePublicAction
