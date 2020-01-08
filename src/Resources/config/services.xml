@@ -8,4 +8,12 @@
         <import resource="services/twig.xml"/>
     </imports>
 
+    <services>
+        <service id="Forci\Bundle\MenuBuilder\Command\ImportRoutesCommand">
+            <argument type="service" id="router"/>
+            <argument type="service" id="forci_menu_builder.manager.routes"/>
+            <tag name="console.command"/>
+        </service>
+    </services>
+
 </container>

@@ -13,29 +13,33 @@
 
 namespace Forci\Bundle\MenuBuilder\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Forci\Bundle\MenuBuilder\Manager\RouteManager;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Routing\Router;
 
-class ImportRoutesCommand extends ContainerAwareCommand {
+class ImportRoutesCommand extends Command {
 
-    protected function configure() {
-        $this->setName('forci_menu_builder:import_routes')
-            ->setDescription('Import routes from your application');
+    /** @var Router */
+    private $router;
+
+    /** @var RouteManager */
+    private $manager;
+
+    public function __construct(
+        Router $router, RouteManager $manager
+    ) {
+        parent::__construct('forci_menu_builder:import_routes');
+        $this->setDescription('Import routes from your application');
+        $this->router = $router;
+        $this->manager = $manager;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $container = $this->getContainer();
-
         $output->write('<info>ForciMenuBuilder: Importing routes...</info>');
 
-        /** @var $router Router */
-        $router = $container->get('router');
-
-        $manager = $container->get('forci_menu_builder.manager.routes');
-
-        $manager->importRouter($router);
+        $this->manager->importRouter($this->router);
 
         $output->writeln('<info> Done.</info>');
     }
