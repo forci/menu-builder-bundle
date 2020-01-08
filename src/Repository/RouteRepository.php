@@ -151,7 +151,11 @@ class RouteRepository extends EntityRepository {
 
     public function remove(Route $route) {
         $em = $this->getEntityManager();
+        foreach ($route->getParameters() as $parameter) {
+            $em->remove($parameter);
+        }
         $em->remove($route);
         $em->flush();
     }
+
 }
