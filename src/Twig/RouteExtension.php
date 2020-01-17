@@ -15,8 +15,10 @@ namespace Forci\Bundle\MenuBuilder\Twig;
 
 use Forci\Bundle\MenuBuilder\Entity\Route;
 use Forci\Bundle\MenuBuilder\Manager\RouteManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class RouteExtension extends \Twig_Extension {
+class RouteExtension extends AbstractExtension {
 
     /**
      * @var RouteManager
@@ -29,7 +31,7 @@ class RouteExtension extends \Twig_Extension {
 
     public function getFilters() {
         return [
-            new \Twig_SimpleFilter('routeName', [$this, 'routeName']),
+            new TwigFilter('routeName', [$this, 'routeName']),
         ];
     }
 

@@ -16,8 +16,11 @@ namespace Forci\Bundle\MenuBuilder\Twig;
 use Forci\Bundle\MenuBuilder\Entity\MenuItem;
 use Forci\Bundle\MenuBuilder\Manager\MenuManager;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class MenuItemExtension extends \Twig_Extension {
+class MenuItemExtension extends AbstractExtension {
 
     /** @var MenuManager */
     protected $manager;
@@ -28,15 +31,15 @@ class MenuItemExtension extends \Twig_Extension {
 
     public function getFilters() {
         return [
-            new \Twig_SimpleFilter('menuItemUrl', [$this, 'menuItemUrl']),
-            new \Twig_SimpleFilter('menuItemPath', [$this, 'menuItemPath'])
+            new TwigFilter('menuItemUrl', [$this, 'menuItemUrl']),
+            new TwigFilter('menuItemPath', [$this, 'menuItemPath'])
         ];
     }
 
     public function getFunctions() {
         return [
-            new \Twig_SimpleFunction('menuItemUrl', [$this, 'menuItemUrl']),
-            new \Twig_SimpleFunction('menuItemPath', [$this, 'menuItemPath'])
+            new TwigFunction('menuItemUrl', [$this, 'menuItemUrl']),
+            new TwigFunction('menuItemPath', [$this, 'menuItemPath'])
         ];
     }
 

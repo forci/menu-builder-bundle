@@ -14,7 +14,8 @@
         "php": ">=7.1.3",
         "symfony/framework-bundle": "~4.4|~5.0",
         "doctrine/orm": "~2.5",
-        "wucdbm/quick-ui-bundle": "~0.2"
+        "wucdbm/quick-ui-bundle": "~0.2",
+        "twig/twig": "~2.0|~3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.8",

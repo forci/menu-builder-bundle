@@ -16,8 +16,11 @@ namespace Forci\Bundle\MenuBuilder\Twig;
 use Forci\Bundle\MenuBuilder\Entity\Menu;
 use Forci\Bundle\MenuBuilder\Entity\MenuItem;
 use Forci\Bundle\MenuBuilder\Manager\MenuManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class MenuExtension extends \Twig_Extension {
+class MenuExtension extends AbstractExtension {
 
     /**
      * @var MenuManager
@@ -30,15 +33,15 @@ class MenuExtension extends \Twig_Extension {
 
     public function getFilters() {
         return [
-            new \Twig_SimpleFilter('getMenu', [$this, 'getMenu']),
-            new \Twig_SimpleFilter('menuTopLevelItems', [$this, 'menuTopLevelItems'])
+            new TwigFilter('getMenu', [$this, 'getMenu']),
+            new TwigFilter('menuTopLevelItems', [$this, 'menuTopLevelItems'])
         ];
     }
 
     public function getFunctions() {
         return [
-            new \Twig_SimpleFunction('getMenu', [$this, 'getMenu']),
-            new \Twig_SimpleFunction('getMenus', [$this, 'getMenus'])
+            new TwigFunction('getMenu', [$this, 'getMenu']),
+            new TwigFunction('getMenus', [$this, 'getMenus'])
         ];
     }
 
