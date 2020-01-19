@@ -6,15 +6,13 @@
 
         <defaults autowire="true" autoconfigure="true" public="true"/>
 
-        <instanceof id="Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
-            <tag name="controller.service_arguments"/>
-        </instanceof>
-
-        <prototype namespace="Forci\Bundle\MenuBuilder\Controller\" resource="../../../Controller">
+        <prototype namespace="Forci\Bundle\MenuBuilder\Controller\" resource="../../../Controller"
+                   autowire="true" autoconfigure="true" public="true">
             <bind key="$menuRepository" type="service" id="forci_menu_builder.repo.menus"/>
             <bind key="$menuManager" type="service" id="forci_menu_builder.manager.menus"/>
             <bind key="$routeRepository" type="service" id="forci_menu_builder.repo.routes"/>
             <bind key="$routeParameterRepository" type="service" id="forci_menu_builder.repo.routes_parameters"/>
+            <tag name="controller.service_arguments"/>
         </prototype>
 
     </services>

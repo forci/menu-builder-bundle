@@ -42,5 +42,7 @@ class ImportRoutesCommand extends Command {
         $this->manager->importRouter($this->router);
 
         $output->writeln('<info> Done.</info>');
+
+        return 0;
     }
 }
